@@ -32,7 +32,7 @@ export default defineComponent({
             cronometroRodando: false
         }
     },
-   
+   emits:['temporizadorFinalizado'],
     methods: {
         iniciar() {
             this.cronometroRodando = true
@@ -43,6 +43,8 @@ export default defineComponent({
         finalizar() {
             this.cronometroRodando = false
             clearInterval(this.cronometro)
+            this.$emit('temporizadorFinalizado', this.temporizador)
+            this.temporizador = 0
         },
     }
 })
